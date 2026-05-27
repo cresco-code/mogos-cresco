@@ -1,0 +1,12 @@
+{
+  "name": "mogos-cresco",
+  "version": "1.0.0",
+  "description": "Acuerdo Mogos × crescō · static one-pager encriptado con StatiCrypt",
+  "private": false,
+  "scripts": {
+    "build": "staticrypt proposal/mogos-onepager.html -p \"${STATICRYPT_PASSWORD:-set-me-in-env}\" -d dist --short --remember 30 -t tools/staticrypt-template.html --template-title \"mogos × crescō\" --template-instructions \"v1.0 · mayo 2026 · ingresa la contraseña para abrir el acuerdo\" --template-button \"Abrir acuerdo\" --template-placeholder \"\" --template-error \"Contraseña incorrecta\" && mv dist/mogos-onepager.html dist/index.html && cp -R public/. dist/"
+  },
+  "devDependencies": {
+    "staticrypt": "^3.5.4"
+  }
+}

@@ -1,0 +1,1753 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#EFEAE0">
+
+<title>crescō · acuerdo Mogos · una página</title>
+<meta name="description" content="Acuerdo Mogos × crescō · 6 meses de equipo de desarrollo dedicado · resumen ejecutivo en una página">
+<meta name="author" content="Carlos Carrasquero">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,450;0,500;0,600;1,400;1,500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+
+<style>
+  :root {
+    --bg: #EFEAE0;
+    --paper: #F7F3EA;
+    --ink: #1A1612;
+    --ink-soft: #5C544A;
+    --accent: #3D5240;
+    --accent-soft: #DAE2D9;
+    --accent-deep: #2A3B2D;
+    --line: #D4CCBC;
+    --line-soft: #E2DBCC;
+    --muted: #8C8377;
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+  }
+
+  /* ═════ wordmarks ═════ */
+  .cresco-mark {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 2px;
+    line-height: 1;
+  }
+  .cresco-mark em {
+    font-style: normal;
+    color: var(--accent);
+    margin-left: -2px;
+  }
+
+  .mogos-mark {
+    height: 22px;
+    width: auto;
+    display: block;
+    color: var(--ink);
+  }
+  .mogos-mark path,
+  .mogos-mark use {
+    fill: currentColor;
+  }
+
+  .lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .lockup .x {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    padding-bottom: 2px;
+  }
+
+  /* ═════ página A4 única ═════ */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 10mm 16mm 9mm;
+    background: var(--bg);
+    border: 0.5pt solid var(--line);
+    box-shadow: 0 1px 3px rgba(26,22,18,0.06);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3mm;
+    overflow: hidden;
+  }
+
+  /* ═════ TOP BAR ═════ */
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 6mm;
+    border-bottom: 0.5pt solid var(--line);
+  }
+  .top-meta {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+    text-align: right;
+    line-height: 1.55;
+  }
+  .top-meta b { color: var(--ink); font-weight: 500; }
+  .top-meta .pulse {
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  /* ═════ HERO ═════ */
+  .hero { display: flex; flex-direction: column; gap: 24px; }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 0.5pt;
+    background: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 34px;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--ink);
+    max-width: 95%;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+  .hero-title .ac { color: var(--accent); }
+
+  .hero-sub {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 75ch;
+    margin-top: 2px;
+  }
+  .hero-sub b { font-style: normal; font-weight: 500; color: var(--ink); }
+
+  /* tech-strip */
+  .tech-strip {
+    margin-top: 8px;
+    padding-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+    line-height: 1.35;
+  }
+  .tech-strip .ts-label { color: var(--accent); font-weight: 500; }
+  .tech-strip .ts-label.end { margin-left: auto; }
+  .tech-strip .tag {
+    background: var(--paper);
+    border: 0.5pt solid var(--accent);
+    color: var(--accent-deep);
+    padding: 2px 9px;
+    border-radius: 99px;
+    font-weight: 500;
+    font-size: 8.5px;
+  }
+  .tech-strip .tag.solid {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+
+  /* stats strip */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 0.5pt solid var(--line);
+    border-bottom: 0.5pt solid var(--line);
+    padding: 7px 0;
+    margin-top: 2px;
+  }
+  .stat {
+    padding: 0 14px;
+    border-right: 0.5pt solid var(--line-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .stat:first-child { padding-left: 0; }
+  .stat:last-child { border-right: none; }
+  .stat .l {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+  }
+  .stat .v {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .stat .v em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  /* ═════ section header ═════ */
+  .sec-head {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .sec-head::before {
+    content: "";
+    width: 16px;
+    height: 0.5pt;
+    background: var(--accent);
+  }
+
+  /* ═════ columnas ═════ */
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12mm;
+  }
+  /* extra aire entre cols (entregables/incluidos) y la sección siguiente (cronograma) */
+  .cols + div {
+    margin-top: 6mm;
+  }
+  .col h3 {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.25;
+  }
+  ul.bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+  ul.bullets li {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    padding-left: 11px;
+    position: relative;
+  }
+  ul.bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6.5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  ul.bullets li strong { color: var(--ink); font-weight: 500; }
+  ul.bullets li em { font-style: italic; color: var(--ink); }
+
+  /* ═════ MINI GANTT · 6 streams ═════ */
+  .timeline { display: flex; flex-direction: column; gap: 9px; }
+  .tl-row {
+    display: grid;
+    grid-template-columns: 155px 1fr 80px;
+    gap: 12px;
+    align-items: center;
+  }
+  .tl-row.clickable {
+    cursor: pointer;
+    padding: 3px 6px;
+    margin: -3px -6px;
+    border-radius: 3px;
+    transition: background 120ms ease;
+  }
+  .tl-row.clickable:hover {
+    background: rgba(61, 82, 64, 0.06);
+  }
+  .tl-row.clickable:hover .tl-name { color: var(--accent); }
+  .tl-row.clickable:hover .tl-bar { filter: brightness(1.08); }
+  .tl-row.clickable:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .tl-name {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .tl-name .code {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .tl-name .live-pill {
+    font-family: var(--mono);
+    font-size: 6.5px;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 1px 5px;
+    border-radius: 99px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .tl-name .live-pill::before {
+    content: "";
+    width: 4px; height: 4px;
+    background: var(--accent-soft);
+    border-radius: 50%;
+  }
+  .tl-bar-track {
+    height: 13px;
+    background: var(--paper);
+    border-radius: 2px;
+    border: 0.5pt solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .tl-bar {
+    position: absolute;
+    top: 0; bottom: 0;
+    background: var(--accent);
+    border-radius: 1px;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    color: var(--bg);
+    font-family: var(--sans);
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .tl-bar.dim {
+    background: transparent;
+    border: 0.5pt dashed var(--accent);
+    color: var(--accent);
+  }
+  .tl-bar.always {
+    background: repeating-linear-gradient(45deg, var(--accent), var(--accent) 4px, var(--accent-deep) 4px, var(--accent-deep) 8px);
+  }
+  .tl-bar.in-progress {
+    background: repeating-linear-gradient(135deg, var(--accent), var(--accent) 3px, #4a6450 3px, #4a6450 6px);
+  }
+  .tl-amt {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    text-align: right;
+    font-weight: 500;
+  }
+  .tl-amt .pct {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 9.5px;
+    color: var(--muted);
+    display: block;
+    letter-spacing: -0.005em;
+    margin-bottom: 1px;
+    font-weight: 400;
+  }
+  .tl-amt.cross { color: var(--accent); }
+
+  .tl-axis {
+    display: grid;
+    grid-template-columns: 155px 1fr 80px;
+    gap: 12px;
+    align-items: center;
+    margin-top: 4px;
+  }
+  .tl-axis .ticks {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 9px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  .tl-axis .ticks span { text-align: center; }
+  .tl-axis .ticks span.q { color: var(--ink); font-weight: 500; }
+
+  .tl-total {
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 0.5pt solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 18px;
+    font-family: var(--sans);
+    font-size: 12px;
+  }
+  .tl-total .label {
+    color: var(--ink-soft);
+    font-style: italic;
+    flex: 1;
+    min-width: 0;
+    line-height: 1.4;
+  }
+  .tl-total .label b {
+    font-style: normal;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .tl-total .total {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    text-align: right;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .tl-total .total .cur {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+    margin-right: 4px;
+    font-weight: 400;
+  }
+  .tl-total .total .rate {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-soft);
+    display: block;
+    letter-spacing: -0.005em;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  .tl-team {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 0.5pt dashed var(--line);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .tl-team-lbl {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: -0.005em;
+    color: var(--ink-soft);
+    margin-right: 4px;
+  }
+  .tl-team-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .tl-team-items li {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 450;
+    color: var(--ink);
+    background: var(--accent-soft);
+    border: 0.5pt solid var(--line);
+    border-radius: 100px;
+    padding: 3px 10px;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
+  /* ═════ FOOTER ═════ */
+  .footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 4mm;
+    border-top: 0.5pt solid var(--line);
+    background: var(--bg);
+    z-index: 2;
+  }
+  .footer .left { max-width: 60%; }
+  .footer .cta-label {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .footer .cta-text {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .footer .cta-text strong { color: var(--ink); font-weight: 500; }
+
+  /* ═════ PHASE PAGE SYSTEM ═════ */
+  .onepager,
+  .phase-page {
+    opacity: 1;
+    transition: opacity 180ms ease;
+  }
+  body.routing .onepager,
+  body.routing .phase-page {
+    opacity: 0;
+  }
+  .phase-page { display: none; }
+  body.view-phase .onepager { display: none; }
+
+  /* phase blueprint */
+  .phase-breadcrumb {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+    padding-bottom: 6mm;
+    border-bottom: 0.5pt solid var(--line);
+  }
+  .phase-breadcrumb .sep { margin: 0 6px; opacity: 0.5; }
+  .phase-breadcrumb .current { color: var(--accent); font-weight: 500; }
+
+  .phase-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 4mm 0 6mm;
+  }
+  .phase-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .phase-code-mark {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 32px;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .phase-title {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .phase-status {
+    font-family: var(--mono);
+    font-size: 8px;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 3px 7px;
+    border-radius: 99px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .phase-subtitle {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    margin-top: 4px;
+  }
+
+  .phase-mini-timeline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5mm 0;
+    border-top: 0.5pt solid var(--line);
+    border-bottom: 0.5pt solid var(--line);
+  }
+  .phase-mini-bar {
+    flex: 1;
+    height: 10px;
+    background: var(--paper);
+    border: 0.5pt solid var(--line);
+    border-radius: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+  .phase-mini-fill {
+    position: absolute;
+    top: 0; bottom: 0;
+    background: var(--accent);
+    border-radius: 1px;
+  }
+  .phase-mini-fill.always {
+    background: repeating-linear-gradient(45deg, var(--accent), var(--accent) 4px, var(--accent-deep) 4px, var(--accent-deep) 8px);
+  }
+  .phase-mini-label {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+  }
+  .phase-mini-label.cur { color: var(--accent); font-weight: 500; }
+
+  .phase-section {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    padding: 5mm 0;
+    border-top: 0.5pt solid var(--line-soft);
+  }
+  .phase-section:first-of-type { border-top: none; }
+  .phase-section-lbl {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    padding-top: 2px;
+    font-weight: 500;
+  }
+  .phase-section-body {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .phase-section-body strong { color: var(--ink); font-weight: 500; }
+  .phase-section-body em { font-style: italic; color: var(--ink); }
+  .phase-section-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .phase-section-body li {
+    padding-left: 12px;
+    position: relative;
+  }
+  .phase-section-body li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .phase-nav {
+    margin-top: auto;
+    padding-top: 5mm;
+    border-top: 0.5pt solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: -0.005em;
+  }
+  .phase-nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 120ms ease;
+  }
+  .phase-nav a:hover { color: var(--accent); }
+  .phase-nav .nxt { color: var(--ink); font-weight: 500; }
+  .phase-nav .nxt:hover { color: var(--accent); }
+
+  .phase-back {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+    text-decoration: none;
+    transition: color 120ms ease;
+  }
+  .phase-back:hover { color: var(--accent); }
+
+  /* ═════ RESPONSIVE ═════ */
+  @media (max-width: 900px) {
+    body { padding: 0; align-items: stretch; }
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      height: auto;
+      padding: 24px 20px 32px;
+      border: none;
+      box-shadow: none;
+      gap: 28px;
+      overflow: visible;
+    }
+    .top { flex-direction: column; align-items: flex-start; gap: 10px; padding-bottom: 16px; }
+    .top-meta { text-align: left; }
+    .hero-title { font-size: 26px; max-width: 100%; line-height: 1.1; }
+    .hero-sub { font-size: 13px; line-height: 1.55; }
+    .sec-head { font-size: 12px; }
+    .tech-strip { gap: 6px; font-size: 10.5px; }
+    .tech-strip .tag { font-size: 9.5px; padding: 3px 9px; }
+    .tech-strip .ts-label.end { margin-left: 0; width: 100%; margin-top: 4px; }
+    .stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 0;
+      padding: 12px 0;
+    }
+    .stat { padding: 4px 12px; border-right: 0.5pt solid var(--line-soft); border-bottom: none; }
+    .stat:nth-child(2n) { border-right: none; padding-right: 0; }
+    .stat:nth-child(2n+1) { padding-left: 0; }
+    .stat .v { font-size: 14.5px; }
+    .cols { grid-template-columns: 1fr; gap: 32px; }
+    .tl-row { grid-template-columns: 96px 1fr 60px; gap: 8px; }
+    .tl-row.clickable { padding: 6px 6px; margin: -6px -6px; }
+    .tl-name { font-size: 11px; letter-spacing: -0.005em; }
+    .tl-name .code { font-size: 9px; }
+    .tl-name .live-pill { font-size: 7px; padding: 1px 5px; }
+    .tl-bar { font-size: 8px; padding: 0 5px; }
+    .tl-amt { font-size: 10.5px; }
+    .tl-amt .pct { font-size: 9px; }
+    .tl-axis { grid-template-columns: 96px 1fr 60px; gap: 8px; }
+    .tl-axis .ticks { grid-template-columns: repeat(6, 1fr); font-size: 9px; }
+    .tl-total { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .tl-total .label { font-size: 11px; line-height: 1.5; }
+    .tl-total .total { font-size: 20px; }
+    .footer { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .footer .left { max-width: 100%; }
+    .footer .cta-text { font-size: 13px; }
+
+    .phase-breadcrumb { font-size: 11px; padding-bottom: 16px; line-height: 1.5; }
+    .phase-hero { padding: 12px 0 20px; }
+    .phase-title-row { flex-wrap: wrap; gap: 8px; }
+    .phase-code-mark { font-size: 24px; }
+    .phase-title { font-size: 24px; }
+    .phase-subtitle { font-size: 13px; }
+    .phase-mini-timeline { padding: 12px 0; gap: 8px; }
+    .phase-mini-label { font-size: 10px; }
+    .phase-section { grid-template-columns: 1fr; gap: 8px; padding: 16px 0; }
+    .phase-section-lbl { font-size: 11px; padding-top: 0; }
+    .phase-section-body { font-size: 13.5px; }
+    .phase-nav { flex-wrap: wrap; gap: 12px; font-size: 11px; }
+  }
+
+  @media (max-width: 420px) {
+    .page { padding: 20px 16px 28px; gap: 24px; }
+    .hero-title { font-size: 22px; }
+    .stat .v { font-size: 13.5px; }
+    .tl-row { grid-template-columns: 82px 1fr 54px; gap: 6px; }
+    .tl-axis { grid-template-columns: 82px 1fr 54px; gap: 6px; }
+    .tl-bar { font-size: 7.5px; padding: 0 4px; }
+    .tl-name { font-size: 10.5px; }
+    .tl-amt { font-size: 10px; }
+    .tl-amt .pct { font-size: 8.5px; }
+    .phase-title { font-size: 22px; }
+    .phase-code-mark { font-size: 22px; }
+  }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .page { box-shadow: none; border: none; page-break-after: always; }
+    .phase-page,
+    body.view-phase .onepager { display: flex !important; }
+    .tl-row.clickable {
+      cursor: default;
+      padding: 0;
+      margin: 0;
+      background: transparent !important;
+    }
+    .phase-back,
+    .phase-nav { display: none !important; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- símbolo reusable del wordmark mogos -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mogos-logo" viewBox="0 0 512 94">
+    <path fill="currentColor" fill-rule="evenodd" d="M 445.58 70.58 C 444.42 70.69 443.99 70.97 443.33 71.25 C 442.68 71.53 442.14 71.90 441.67 72.25 C 441.19 72.60 440.86 72.93 440.50 73.33 C 440.14 73.74 439.82 74.14 439.50 74.67 C 439.18 75.19 438.81 75.85 438.58 76.50 C 438.36 77.15 438.25 77.75 438.17 78.58 C 438.08 79.42 438.06 80.64 438.08 81.50 C 438.11 82.36 438.07 82.90 438.33 83.75 C 438.60 84.60 439.12 85.75 439.67 86.58 C 440.21 87.42 440.90 88.18 441.58 88.75 C 442.26 89.32 442.71 89.60 443.75 90.00 C 444.79 90.40 446.94 91.00 447.83 91.17 C 448.72 91.33 448.19 91.26 449.08 91.00 C 449.97 90.74 452.12 90.10 453.17 89.58 C 454.21 89.07 454.69 88.51 455.33 87.92 C 455.97 87.32 456.54 86.68 457.00 86.00 C 457.46 85.32 457.82 84.62 458.08 83.83 C 458.35 83.04 458.50 81.92 458.58 81.25 C 458.67 80.58 458.64 80.40 458.58 79.83 C 458.53 79.26 458.51 78.62 458.25 77.83 C 457.99 77.04 457.33 75.71 457.00 75.08 C 456.67 74.46 456.69 74.56 456.25 74.08 C 455.81 73.61 454.85 72.68 454.33 72.25 C 453.82 71.82 453.83 71.78 453.17 71.50 C 452.50 71.22 451.60 70.74 450.33 70.58 C 449.07 70.43 446.75 70.47 445.58 70.58 Z M 445.75 14.08 C 443.69 16.11 441.61 18.64 440.33 21.42 C 439.06 24.19 438.22 27.40 438.08 30.75 C 437.94 34.10 438.43 38.39 439.50 41.50 C 440.57 44.61 441.93 46.74 444.50 49.42 C 447.07 52.10 447.78 53.46 454.92 57.58 C 462.06 61.71 480.79 70.29 487.33 74.17 C 493.88 78.04 492.56 78.38 494.17 80.83 C 495.78 83.29 494.04 87.50 497.00 88.92 C 499.96 90.33 509.43 90.19 511.92 89.33 C 514.40 88.47 512.22 85.60 511.92 83.75 C 511.61 81.90 510.88 80.04 510.08 78.25 C 509.29 76.46 508.56 74.89 507.17 73.00 C 505.78 71.11 504.40 69.21 501.75 66.92 C 499.10 64.62 498.06 63.10 491.25 59.25 C 484.44 55.40 466.86 47.21 460.92 43.83 C 454.97 40.46 456.83 40.61 455.58 39.00 C 454.33 37.39 453.62 36.03 453.42 34.17 C 453.21 32.31 453.47 29.69 454.33 27.83 C 455.19 25.97 456.75 24.25 458.58 23.00 C 460.42 21.75 462.76 20.83 465.33 20.33 C 467.90 19.83 471.38 19.86 474.00 20.00 C 476.62 20.14 479.01 20.49 481.08 21.17 C 483.15 21.85 484.92 22.94 486.42 24.08 C 487.92 25.22 489.07 26.22 490.08 28.00 C 491.10 29.78 489.76 33.62 492.50 34.75 C 495.24 35.88 504.01 34.99 506.50 34.75 C 508.99 34.51 507.47 34.79 507.42 33.33 C 507.36 31.88 507.36 28.89 506.17 26.00 C 504.97 23.11 503.10 18.97 500.25 16.00 C 497.40 13.03 493.06 9.94 489.08 8.17 C 485.11 6.39 481.25 5.61 476.42 5.33 C 471.58 5.06 464.04 5.85 460.08 6.50 C 456.12 7.15 455.06 7.99 452.67 9.25 C 450.28 10.51 447.81 12.06 445.75 14.08 Z M 383.50 4.83 C 380.56 5.10 377.39 5.68 374.75 6.42 C 372.11 7.15 370.06 7.97 367.67 9.25 C 365.28 10.53 362.64 12.25 360.42 14.08 C 358.19 15.92 356.00 18.25 354.33 20.25 C 352.67 22.25 351.69 23.57 350.42 26.08 C 349.14 28.60 347.51 32.62 346.67 35.33 C 345.82 38.04 345.56 39.43 345.33 42.33 C 345.11 45.24 344.97 49.38 345.33 52.75 C 345.69 56.12 346.64 59.82 347.50 62.58 C 348.36 65.35 349.26 67.15 350.50 69.33 C 351.74 71.51 353.31 73.74 354.92 75.67 C 356.53 77.60 358.17 79.28 360.17 80.92 C 362.17 82.56 364.54 84.19 366.92 85.50 C 369.29 86.81 371.79 87.88 374.42 88.75 C 377.04 89.62 380.03 90.36 382.67 90.75 C 385.31 91.14 387.32 91.33 390.25 91.08 C 393.18 90.83 397.46 89.99 400.25 89.25 C 403.04 88.51 404.69 87.81 407.00 86.67 C 409.31 85.53 411.72 84.22 414.08 82.42 C 416.44 80.61 419.01 78.38 421.17 75.83 C 423.32 73.29 425.50 70.00 427.00 67.17 C 428.50 64.33 429.40 61.94 430.17 58.83 C 430.93 55.72 431.40 51.33 431.58 48.50 C 431.76 45.67 431.65 44.40 431.25 41.83 C 430.85 39.26 430.03 35.68 429.17 33.08 C 428.31 30.49 427.28 28.38 426.08 26.25 C 424.89 24.12 423.96 22.54 422.00 20.33 C 420.04 18.12 416.61 14.86 414.33 13.00 C 412.06 11.14 410.44 10.25 408.33 9.17 C 406.22 8.08 404.32 7.22 401.67 6.50 C 399.01 5.78 395.44 5.11 392.42 4.83 C 389.39 4.56 386.44 4.57 383.50 4.83 Z M 381.92 20.33 C 384.61 20.17 390.92 19.88 394.25 20.33 C 397.58 20.79 399.93 22.14 401.92 23.08 C 403.90 24.03 404.78 24.81 406.17 26.00 C 407.56 27.19 409.07 28.78 410.25 30.25 C 411.43 31.72 412.42 33.22 413.25 34.83 C 414.08 36.44 414.75 38.07 415.25 39.92 C 415.75 41.76 416.11 44.10 416.25 45.92 C 416.39 47.74 416.28 49.19 416.08 50.83 C 415.89 52.47 415.74 53.83 415.08 55.75 C 414.43 57.67 413.21 60.51 412.17 62.33 C 411.12 64.15 410.18 65.25 408.83 66.67 C 407.49 68.08 405.71 69.69 404.08 70.83 C 402.46 71.97 400.71 72.78 399.08 73.50 C 397.46 74.22 396.10 74.76 394.33 75.17 C 392.57 75.57 390.01 75.82 388.50 75.92 C 386.99 76.01 387.03 76.10 385.25 75.75 C 383.47 75.40 379.79 74.50 377.83 73.83 C 375.88 73.17 374.85 72.56 373.50 71.75 C 372.15 70.94 370.93 70.03 369.75 69.00 C 368.57 67.97 367.49 66.97 366.42 65.58 C 365.35 64.19 364.18 62.39 363.33 60.67 C 362.49 58.94 361.81 57.08 361.33 55.25 C 360.86 53.42 360.60 51.68 360.50 49.67 C 360.40 47.65 360.46 45.26 360.75 43.17 C 361.04 41.07 361.61 38.90 362.25 37.08 C 362.89 35.26 363.71 33.69 364.58 32.25 C 365.46 30.81 366.18 29.76 367.50 28.42 C 368.82 27.07 370.74 25.35 372.50 24.17 C 374.26 22.99 376.51 21.97 378.08 21.33 C 379.65 20.69 379.22 20.50 381.92 20.33 Z M 189.50 4.75 C 187.11 4.88 185.38 5.01 182.92 5.58 C 180.46 6.15 177.28 7.07 174.75 8.17 C 172.22 9.26 170.01 10.54 167.75 12.17 C 165.49 13.79 163.21 15.67 161.17 17.92 C 159.12 20.17 156.94 23.26 155.50 25.67 C 154.06 28.07 153.35 29.86 152.50 32.33 C 151.65 34.81 150.83 37.64 150.42 40.50 C 150.00 43.36 149.83 46.33 150.00 49.50 C 150.17 52.67 150.83 56.85 151.42 59.50 C 152.00 62.15 152.50 63.24 153.50 65.42 C 154.50 67.60 155.88 70.33 157.42 72.58 C 158.96 74.83 160.88 77.07 162.75 78.92 C 164.62 80.76 166.35 82.18 168.67 83.67 C 170.99 85.15 174.07 86.75 176.67 87.83 C 179.26 88.92 181.38 89.61 184.25 90.17 C 187.12 90.72 190.96 91.18 193.92 91.17 C 196.88 91.15 199.10 90.79 202.00 90.08 C 204.90 89.38 208.58 88.14 211.33 86.92 C 214.08 85.69 216.22 84.40 218.50 82.75 C 220.78 81.10 223.06 79.10 225.00 77.00 C 226.94 74.90 228.65 72.67 230.17 70.17 C 231.68 67.67 233.08 64.88 234.08 62.00 C 235.08 59.12 235.81 56.06 236.17 52.92 C 236.53 49.78 236.44 45.96 236.25 43.17 C 236.06 40.38 235.90 39.01 235.00 36.17 C 234.10 33.32 232.14 28.65 230.83 26.08 C 229.53 23.51 228.79 22.68 227.17 20.75 C 225.54 18.82 223.39 16.42 221.08 14.50 C 218.78 12.58 215.81 10.60 213.33 9.25 C 210.86 7.90 208.93 7.15 206.25 6.42 C 203.57 5.68 200.04 5.11 197.25 4.83 C 194.46 4.56 191.89 4.62 189.50 4.75 Z M 186.67 20.33 C 189.69 20.03 196.42 20.18 199.08 20.33 C 201.75 20.49 201.12 20.64 202.67 21.25 C 204.21 21.86 206.76 23.04 208.33 24.00 C 209.90 24.96 210.78 25.74 212.08 27.00 C 213.39 28.26 215.14 30.22 216.17 31.58 C 217.19 32.94 217.60 33.76 218.25 35.17 C 218.90 36.57 219.61 38.14 220.08 40.00 C 220.56 41.86 220.94 44.54 221.08 46.33 C 221.22 48.12 221.07 49.29 220.92 50.75 C 220.76 52.21 220.79 53.19 220.17 55.08 C 219.54 56.97 218.00 60.43 217.17 62.08 C 216.33 63.74 216.31 63.71 215.17 65.00 C 214.03 66.29 211.99 68.51 210.33 69.83 C 208.68 71.15 207.12 72.03 205.25 72.92 C 203.38 73.81 201.54 74.68 199.08 75.17 C 196.62 75.65 192.71 75.88 190.50 75.83 C 188.29 75.79 187.81 75.57 185.83 74.92 C 183.86 74.26 180.68 73.03 178.67 71.92 C 176.65 70.81 175.11 69.47 173.75 68.25 C 172.39 67.03 171.38 65.74 170.50 64.58 C 169.62 63.43 169.21 62.86 168.50 61.33 C 167.79 59.81 166.78 57.32 166.25 55.42 C 165.72 53.51 165.47 51.74 165.33 49.92 C 165.19 48.10 165.25 46.26 165.42 44.50 C 165.58 42.74 165.67 41.36 166.33 39.33 C 167.00 37.31 168.42 34.15 169.42 32.33 C 170.42 30.51 171.28 29.60 172.33 28.42 C 173.39 27.24 174.32 26.29 175.75 25.25 C 177.18 24.21 179.10 22.99 180.92 22.17 C 182.74 21.35 183.64 20.64 186.67 20.33 Z M 3.50 26.42 C 1.06 30.51 0.58 26.18 0.00 36.67 C -0.58 47.15 -2.62 80.74 0.00 89.33 C 2.62 97.93 13.01 97.10 15.75 88.25 C 18.49 79.40 15.06 46.89 16.42 36.25 C 17.78 25.61 20.60 27.12 23.92 24.42 C 27.24 21.71 31.64 20.22 36.33 20.00 C 41.03 19.78 47.94 20.74 52.08 23.08 C 56.22 25.43 59.38 23.11 61.17 34.08 C 62.96 45.06 60.03 79.89 62.83 88.92 C 65.64 97.94 75.26 97.36 78.00 88.25 C 80.74 79.14 77.82 44.94 79.25 34.25 C 80.68 23.56 83.33 26.46 86.58 24.08 C 89.83 21.71 94.49 20.36 98.75 20.00 C 103.01 19.64 108.42 20.26 112.17 21.92 C 115.92 23.57 119.15 26.94 121.25 29.92 C 123.35 32.89 124.17 29.96 124.75 39.75 C 125.33 49.54 122.17 80.60 124.75 88.67 C 127.33 96.74 137.89 97.58 140.25 88.17 C 142.61 78.75 140.24 43.71 138.92 32.17 C 137.60 20.62 135.61 22.89 132.33 18.92 C 129.06 14.94 123.86 10.69 119.25 8.33 C 114.64 5.97 109.26 5.22 104.67 4.75 C 100.07 4.28 95.81 4.61 91.67 5.50 C 87.53 6.39 83.44 7.96 79.83 10.08 C 76.22 12.21 73.26 18.24 70.00 18.25 C 66.74 18.26 63.24 12.14 60.25 10.17 C 57.26 8.19 57.12 7.21 52.08 6.42 C 47.04 5.62 36.24 4.47 30.00 5.42 C 23.76 6.36 19.08 8.58 14.67 12.08 C 10.25 15.58 5.94 22.32 3.50 26.42 Z M 287.83 2.42 C 282.57 2.88 275.68 3.93 270.50 6.17 C 265.32 8.40 260.58 11.47 256.75 15.83 C 252.92 20.19 249.36 26.69 247.50 32.33 C 245.64 37.97 245.24 43.83 245.58 49.67 C 245.93 55.50 247.25 62.12 249.58 67.33 C 251.92 72.54 255.75 77.35 259.58 80.92 C 263.42 84.49 267.21 86.86 272.58 88.75 C 277.96 90.64 285.40 92.43 291.83 92.25 C 298.26 92.07 305.82 89.94 311.17 87.67 C 316.51 85.39 320.26 82.54 323.92 78.58 C 327.57 74.62 331.07 69.75 333.08 63.92 C 335.10 58.08 343.83 47.11 336.00 43.58 C 328.17 40.06 294.39 40.61 286.08 42.75 C 277.78 44.89 280.68 54.08 286.17 56.42 C 291.65 58.75 313.82 55.65 319.00 56.75 C 324.18 57.85 319.01 60.33 317.25 63.00 C 315.49 65.67 312.11 70.28 308.42 72.75 C 304.72 75.22 299.36 77.11 295.08 77.83 C 290.81 78.56 286.82 78.22 282.75 77.08 C 278.68 75.94 274.06 74.04 270.67 71.00 C 267.28 67.96 264.10 63.22 262.42 58.83 C 260.74 54.44 260.24 49.39 260.58 44.67 C 260.93 39.94 262.12 34.60 264.50 30.50 C 266.88 26.40 271.01 22.42 274.83 20.08 C 278.65 17.75 283.21 16.94 287.42 16.50 C 291.62 16.06 296.28 16.38 300.08 17.42 C 303.89 18.46 307.17 20.10 310.25 22.75 C 313.33 25.40 314.61 31.68 318.58 33.33 C 322.56 34.99 332.65 35.06 334.08 32.67 C 335.51 30.28 330.14 22.93 327.17 19.00 C 324.19 15.07 320.43 11.68 316.25 9.08 C 312.07 6.49 306.82 4.53 302.08 3.42 C 297.35 2.31 293.10 1.96 287.83 2.42 Z"/>
+  </symbol>
+</svg>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     ONE-PAGER · RESUMEN EJECUTIVO
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="page onepager">
+
+  <div class="top">
+    <span class="lockup">
+      <svg class="mogos-mark" viewBox="0 0 512 94" role="img" aria-label="mogos"><use href="#mogos-logo"/></svg>
+      <span class="x">×</span>
+      <span class="cresco-mark">crescō<em>.</em></span>
+    </span>
+    <div class="top-meta">
+      <span class="pulse"></span><b>Resumen ejecutivo · una página</b><br>
+      Acuerdo de desarrollo · v1.0 · mayo 2026 · documento privado
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="eyebrow">Mogos · próximos 6 meses</span>
+    <h1 class="hero-title">
+      Equipo de desarrollo dedicado<br>
+      <em>para evolucionar la plataforma Mogos</em>
+    </h1>
+    <p class="hero-sub">
+      Seis meses de equipo continuo trabajando en <strong>8 corrientes de desarrollo en paralelo</strong> — desde mantenimiento de la plataforma hasta sembrar los <strong>fundamentos AI en lenguaje Mogos</strong> con migración a Notion y capacitación a toda la empresa. Capacidad fija, prioridades dinámicas, hitos visibles cada mes.
+    </p>
+
+    <div class="tech-strip">
+      <span class="ts-label">Preparado para</span>
+      <span class="tag solid">Ecosistema Anthropic (Claude, Cowork, Claude Code, Claude Design)</span>
+      <span class="tag">Notion como SO de la empresa</span>
+      <span class="tag">Equipo Mogos completo</span>
+      <span class="ts-label end">+ formación operativa, ventas y dirección</span>
+    </div>
+  </div>
+
+  <div class="cols">
+
+    <div class="col">
+      <div class="sec-head">Lo que se construye</div>
+      <ul class="bullets">
+        <li><strong>Mantenimiento de la plataforma</strong> · continuidad operativa: bugs en producción, mejoras pequeñas y soporte de capacidad para ventas en curso.</li>
+        <li><strong>Nuevo almacén China</strong> · dejar encaminada la creación del hub origen: conseguir el espacio y diseñar cómo se integra al sistema. m1 presencial, el resto asíncrono. <em>Trabajo en curso.</em></li>
+        <li><strong>App móvil del cliente</strong> · iOS + Android para cotizar, rastrear órdenes, ver historial y recibir notificaciones push en cada cambio de estado.</li>
+        <li><strong>Gamification</strong> · sistema de puntos, niveles y recompensas para clientes recurrentes. Incentiva repeat purchases y lealtad por canal WhatsApp.</li>
+        <li><strong>Módulo de créditos</strong> · línea interna para clientes recurrentes con scoring, límites, recargos y cobranza automatizada por whatsapp.</li>
+        <li><strong>Modernización almacén Caracas</strong> · manejo de pallets y procesos cableados al sistema para ahorrar tiempo con tecnología. Trazabilidad bulto a bulto, sin papel.</li>
+        <li><strong>App de transportista terrestre</strong> · canal móvil para asignar, despachar y trazar entregas. Estados en vivo y prueba de entrega.</li>
+        <li><strong>Fundamentos AI en lenguaje Mogos</strong> · migración del conocimiento operativo a Notion, agentes Claude para soporte/ventas/operaciones, y capacitación completa al equipo. La AI se vuelve colaborador real en el día a día.</li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <div class="sec-head">Incluidos en la cuota</div>
+      <ul class="bullets">
+        <li><strong>Reunión semanal</strong> de prioridades con dirección · 60 min · agenda + minuta en Notion.</li>
+        <li><strong>Reporte mensual</strong> con avance por corriente, ventas asistidas por AI y cuellos de botella detectados.</li>
+        <li><strong>Brand AI de Mogos</strong> · documento vivo que define cómo habla, cotiza y decide la AI en nombre de Mogos.</li>
+        <li><strong>Skills internas Anthropic</strong> · adopción guiada de Claude, Code, Cowork y Design a nivel operativo y dirección.</li>
+        <li><strong>Hand-off documentado</strong> · cada entregable queda con README, runbook y video corto para tu equipo.</li>
+        <li><strong>Capacitación cruzada</strong> · planta Caracas + China entrenadas en el mismo lenguaje y herramientas.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div>
+    <div class="sec-head">Cronograma · 8 corrientes en paralelo</div>
+
+    <div class="timeline">
+
+      <div class="tl-row clickable" data-phase="s1" role="link" tabindex="0" aria-label="Ver detalle de s1 mantenimiento">
+        <span class="tl-name"><span class="code">s1</span>Mantenimiento</span>
+        <div class="tl-bar-track">
+          <div class="tl-bar always" style="left:0%;width:100%">always-on · 6 meses</div>
+        </div>
+        <span class="tl-amt cross">always</span>
+      </div>
+
+      <div class="tl-row clickable" data-phase="s2" role="link" tabindex="0" aria-label="Ver detalle de s2 almacén china">
+        <span class="tl-name"><span class="code">s2</span>Almacén China<span class="live-pill">en curso</span></span>
+        <div class="tl-bar-track">
+          <div class="tl-bar in-progress" style="left:0%;width:17%">m1 · presencial · encaminar</div>
+          <div class="tl-bar dim" style="left:17%;width:50%">resto · asíncrono</div>
+        </div>
+        <span class="tl-amt"><span class="pct">go-live m1</span>m1–m2</span>
+      </div>
+
+      <div class="tl-row clickable" data-phase="s7" role="link" tabindex="0" aria-label="Ver detalle de s7 app móvil del cliente">
+        <span class="tl-name"><span class="code">s7</span>App móvil del cliente</span>
+        <div class="tl-bar-track">
+          <div class="tl-bar" style="left:17%;width:50%">m2–m4 · iOS + Android build</div>
+          <div class="tl-bar dim" style="left:67%;width:33%">m5–m6 · stores + ajustes</div>
+        </div>
+        <span class="tl-amt"><span class="pct">go-live m5</span>m2–m6</span>
+      </div>
+
+      <div class="tl-row clickable" data-phase="s8" role="link" tabindex="0" aria-label="Ver detalle de s8 gamification">
+        <span class="tl-name"><span class="code">s8</span>Gamification</span>
+        <div class="tl-bar-track">
+          <div class="tl-bar" style="left:50%;width:33%">m4–m5 · motor de puntos</div>
+          <div class="tl-bar dim" style="left:83%;width:17%">m6 · integración WhatsApp</div>
+        </div>
+        <span class="tl-amt"><span class="pct">primer badge m5</span>m4–m6</span>
+      </div>
+
+      <div class="tl-row clickable" data-phase="s3" role="link" tabindex="0" aria-label="Ver detalle de s3 créditos">
+        <span class="tl-name"><span class="code">s3</span>Créditos</span>
+        <div class="tl-bar-track">
+          <div class="tl-bar" style="left:17%;width:33%">m2–m3 · build</div>
+          <div class="tl-bar dim" style="left:50%;width:17%">m4 · hardening</div>
+        </div>
+        <span class="tl-amt"><span class="pct">mvp m3</span>m2–m4</span>
+      </div>
+
+      <div class="tl-row clickable" data-phase="s4" role="link" tabindex="0" aria-label="Ver detalle de s4 transportista">
+        <span class="tl-name"><span class="code">s4</span>Transportista</span>
+        <div class="tl-bar-track">
+          <div class="tl-bar" style="left:33%;width:33%">m3–m4 · app móvil</div>
+          <div class="tl-bar dim" style="left:66%;width:17%">m5 · roll-out</div>
+        </div>
+        <span class="tl-amt"><span class="pct">mvp m4</span>m3–m5</span>
+      </div>
+
+      <div class="tl-row clickable" data-phase="s5" role="link" tabindex="0" aria-label="Ver detalle de s5 almacén caracas">
+        <span class="tl-name"><span class="code">s5</span>Almacén Caracas</span>
+        <div class="tl-bar-track">
+          <div class="tl-bar" style="left:50%;width:33%">m4–m5 · pallets + build</div>
+          <div class="tl-bar dim" style="left:83%;width:17%">m6 · hand-off</div>
+        </div>
+        <span class="tl-amt"><span class="pct">go-live m5</span>m4–m6</span>
+      </div>
+
+      <div class="tl-row clickable" data-phase="s6" role="link" tabindex="0" aria-label="Ver detalle de s6 Fundamentos AI">
+        <span class="tl-name"><span class="code">s6</span>Fundamentos AI en lenguaje Mogos</span>
+        <div class="tl-bar-track">
+          <div class="tl-bar" style="left:0%;width:33%">m1–m2 · Notion + Brand AI</div>
+          <div class="tl-bar" style="left:33%;width:50%">m3–m5 · agentes + adopción</div>
+          <div class="tl-bar dim" style="left:83%;width:17%">m6 · formación</div>
+        </div>
+        <span class="tl-amt cross">cross</span>
+      </div>
+
+    </div>
+
+    <div class="tl-axis">
+      <span></span>
+      <div class="ticks">
+        <span class="q">m1</span><span class="q">m2</span><span class="q">m3</span><span class="q">m4</span><span class="q">m5</span><span class="q">m6</span>
+      </div>
+      <span></span>
+    </div>
+
+    <div class="tl-total">
+      <span class="label">6 meses · 26 semanas · cuota fija mensual · prioridades acordadas cada semana con dirección · <b>los hitos de cada corriente son revisables, la capacidad no.</b></span>
+      <span class="total"><span class="cur">USD</span>7.000<span class="rate">capacidad mensual</span></span>
+    </div>
+
+    <div class="tl-team">
+      <span class="tl-team-lbl">El equipo</span>
+      <ul class="tl-team-items">
+        <li>3 desarrolladores</li>
+        <li>Encargado de pruebas</li>
+        <li>Expertos contratados por área de tecnología</li>
+        <li>Las mejores herramientas de AI</li>
+        <li>Métricas de producto para decisiones estratégicas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="left">
+      <div class="cta-label">Próximo paso</div>
+      <div class="cta-text">
+        Reunión de 45 min con dirección para revisar prioridades del mes 1 y firmar el <strong>acuerdo marco a 6 meses</strong>. Arranque la semana siguiente con la primera reunión de stream.
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     S1 · MANTENIMIENTO
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="page phase-page" id="s1">
+
+  <div class="top">
+    <span class="lockup">
+      <svg class="mogos-mark" viewBox="0 0 512 94" role="img" aria-label="mogos"><use href="#mogos-logo"/></svg>
+      <span class="x">×</span>
+      <span class="cresco-mark">crescō<em>.</em></span>
+    </span>
+    <a href="#" class="phase-back">← volver al one-pager</a>
+  </div>
+
+  <div class="phase-breadcrumb">
+    acuerdo <span class="sep">/</span> corrientes <span class="sep">/</span> <span class="current">s1 mantenimiento</span>
+  </div>
+
+  <div class="phase-hero">
+    <div class="phase-title-row">
+      <span class="phase-code-mark">s1/</span>
+      <span class="phase-title">Mantenimiento</span>
+    </div>
+    <span class="phase-subtitle">Plataforma viva mientras crecen las demás corrientes · always-on · 6 meses · capacidad reservada</span>
+  </div>
+
+  <div class="phase-mini-timeline">
+    <span class="phase-mini-label cur">m1</span>
+    <div class="phase-mini-bar"><div class="phase-mini-fill always" style="left:0%;width:100%;"></div></div>
+    <span class="phase-mini-label cur">m6</span>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">qué hacemos</div>
+    <div class="phase-section-body">
+      Mantenemos viva la plataforma Mogos mientras se construyen las nuevas corrientes. <strong>Cola de bugs en producción cerrada por sprint</strong>, mejoras pequeñas priorizadas en la reunión semanal con dirección, y soporte de capacidad para ventas en curso cuando un cliente o un flete necesitan atención humana del lado del producto.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">por qué importa</div>
+    <div class="phase-section-body">
+      Mogos no puede pausar mientras se construye. <strong>Cada nueva corriente se monta sobre una base que sigue moviendo órdenes, fletes y cotizaciones todos los días</strong>. Sin mantenimiento, el costo de oportunidad de pausar la operación supera al de cualquier feature nueva.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">entregables</div>
+    <div class="phase-section-body">
+      <ul>
+        <li>Cola de bugs cerrada por sprint (reporte mensual)</li>
+        <li>Mejoras pequeñas priorizadas en la reunión semanal</li>
+        <li>Métricas de salud técnica visibles para dirección</li>
+        <li>Soporte de capacidad para ventas en curso (consultas técnicas)</li>
+        <li>Monitoreo proactivo de la plataforma en producción</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">cuando está listo</div>
+    <div class="phase-section-body">
+      <strong>Cierra con el contrato a los 6 meses.</strong> El "listo" de esta corriente se mide mes a mes: ningún bug crítico abierto al cierre del mes y la cola priorizada actualizada en Notion.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">compromiso</div>
+    <div class="phase-section-body">
+      <strong>Capacidad always-on</strong> reservada dentro del retainer mensual. Redistribuible mes a mes según prioridades acordadas con dirección — un mes puede ser 15% si todo está calmo, otro puede ser 35% si hay un incidente. <em>Lo que se garantiza es la disponibilidad, no el techo.</em>
+    </div>
+  </div>
+
+  <div class="phase-nav">
+    <a href="#" class="prev">← acuerdo</a>
+    <a href="#s2" class="nxt">s2 almacén china →</a>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     S2 · ALMACÉN CHINA (en curso)
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="page phase-page" id="s2">
+
+  <div class="top">
+    <span class="lockup">
+      <svg class="mogos-mark" viewBox="0 0 512 94" role="img" aria-label="mogos"><use href="#mogos-logo"/></svg>
+      <span class="x">×</span>
+      <span class="cresco-mark">crescō<em>.</em></span>
+    </span>
+    <a href="#" class="phase-back">← volver al one-pager</a>
+  </div>
+
+  <div class="phase-breadcrumb">
+    acuerdo <span class="sep">/</span> corrientes <span class="sep">/</span> <span class="current">s2 nuevo almacén china</span>
+  </div>
+
+  <div class="phase-hero">
+    <div class="phase-title-row">
+      <span class="phase-code-mark">s2/</span>
+      <span class="phase-title">Nuevo almacén China</span>
+      <span class="phase-status">en curso</span>
+    </div>
+    <span class="phase-subtitle">Dejar encaminada la creación del hub origen · m1 presencial · resto asíncrono</span>
+  </div>
+
+  <div class="phase-mini-timeline">
+    <span class="phase-mini-label cur">m1</span>
+    <div class="phase-mini-bar"><div class="phase-mini-fill" style="left:0%;width:17%;"></div></div>
+    <span class="phase-mini-label">m6</span>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">qué hacemos</div>
+    <div class="phase-section-body">
+      Dejamos <strong>encaminada la creación del almacén físico en China</strong>: conseguir el espacio, definir el layout operativo y <strong>diseñar cómo va a interactuar con el sistema</strong> — recepción de bultos, consolidación en fletes y handoff a tránsito. El primer mes es presencial; a partir de ahí <strong>la ejecución continúa de forma asíncrona</strong> sobre las bases ya definidas.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">por qué importa</div>
+    <div class="phase-section-body">
+      El almacén China es <strong>la entrada del flujo</strong>. La presencia física está acotada a un mes, así que el valor está en <strong>dejar el espacio asegurado y el diseño de integración tan claro que el resto se ejecute a distancia</strong> sin perder calidad. Lo que se decide acá define cómo entra la data al resto del proyecto.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">entregables</div>
+    <div class="phase-section-body">
+      <ul>
+        <li>Espacio del almacén conseguido y layout operativo definido</li>
+        <li>Diseño de integración con el sistema (recepción / consolidación / handoff)</li>
+        <li>Plan de continuidad asíncrona con responsables y checkpoints</li>
+        <li>Capacitación inicial al equipo de planta china</li>
+        <li>Runbook bilingüe (ES + ZH) con los escenarios base</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">cuando está listo</div>
+    <div class="phase-section-body">
+      <strong>Al cierre del m1: espacio asegurado + diseño de integración aprobado</strong> y plan de continuidad acordado. De ahí en adelante el avance se mide por checkpoints asíncronos, no por presencia. El hito presencial es <strong>dejarlo encaminado, no terminado</strong>.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">compromiso</div>
+    <div class="phase-section-body">
+      <strong>Foco presencial del m1, continuación asíncrona después.</strong> Como ya está en curso, no se factura aparte — se libera capacidad del retainer para encaminarlo bien mientras hay presencia en sitio. El seguimiento posterior vive dentro del mantenimiento y la coordinación semanal con dirección.
+    </div>
+  </div>
+
+  <div class="phase-nav">
+    <a href="#s1" class="prev">← s1 mantenimiento</a>
+    <a href="#s3" class="nxt">s3 créditos →</a>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     S3 · CRÉDITOS
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="page phase-page" id="s3">
+
+  <div class="top">
+    <span class="lockup">
+      <svg class="mogos-mark" viewBox="0 0 512 94" role="img" aria-label="mogos"><use href="#mogos-logo"/></svg>
+      <span class="x">×</span>
+      <span class="cresco-mark">crescō<em>.</em></span>
+    </span>
+    <a href="#" class="phase-back">← volver al one-pager</a>
+  </div>
+
+  <div class="phase-breadcrumb">
+    acuerdo <span class="sep">/</span> corrientes <span class="sep">/</span> <span class="current">s3 módulo de créditos</span>
+  </div>
+
+  <div class="phase-hero">
+    <div class="phase-title-row">
+      <span class="phase-code-mark">s3/</span>
+      <span class="phase-title">Módulo de créditos</span>
+    </div>
+    <span class="phase-subtitle">Línea interna para clientes recurrentes · m2–m4 · MVP en m3</span>
+  </div>
+
+  <div class="phase-mini-timeline">
+    <span class="phase-mini-label">m1</span>
+    <div class="phase-mini-bar"><div class="phase-mini-fill" style="left:17%;width:50%;"></div></div>
+    <span class="phase-mini-label">m6</span>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">qué hacemos</div>
+    <div class="phase-section-body">
+      Construimos el módulo de créditos integrado con cotizaciones y pagos existentes. <strong>Scoring básico de cliente</strong>, asignación y revisión de <strong>límites</strong>, cálculo de <strong>recargos por mora</strong>, y <strong>cobranza automatizada por whatsapp</strong> con escalado a humano. MVP usable en producción al cierre del m3, hardening en m4 con 3 clientes piloto.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">por qué importa</div>
+    <div class="phase-section-body">
+      El cliente recurrente de Mogos quiere <strong>movilizar carga sin esperar a pagar previamente</strong>. Hoy se concede crédito de manera ad-hoc, con criterios inconsistentes y cobranza manual. El módulo lo formaliza, lo escala y lo audita — y libera al equipo de ventas para vender, no para cobrar.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">entregables</div>
+    <div class="phase-section-body">
+      <ul>
+        <li>Motor de scoring v1 (histórico de pagos + volumen + antigüedad)</li>
+        <li>Panel admin para asignar y revisar límites</li>
+        <li>Templates de whatsapp para cobranza por estado de mora</li>
+        <li>Cálculo automático de recargos según política</li>
+        <li>Reportes de cartera: cuentas por cobrar, mora, exposición</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">cuando está listo</div>
+    <div class="phase-section-body">
+      <strong>MVP en producción al cierre del m3</strong> con 3 clientes piloto activos. <strong>Hardening cerrado en m4</strong>: ajustes de scoring + iteración sobre templates de cobranza basada en respuestas reales.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">compromiso</div>
+    <div class="phase-section-body">
+      <strong>Corriente principal m2–m3</strong> (build) y soporte en m4 (hardening). Depende de que el flujo de payments del almacén China esté limpio para que el scoring tenga data confiable.
+    </div>
+  </div>
+
+  <div class="phase-nav">
+    <a href="#s2" class="prev">← s2 almacén china</a>
+    <a href="#s4" class="nxt">s4 transportista →</a>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     S4 · TRANSPORTISTA
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="page phase-page" id="s4">
+
+  <div class="top">
+    <span class="lockup">
+      <svg class="mogos-mark" viewBox="0 0 512 94" role="img" aria-label="mogos"><use href="#mogos-logo"/></svg>
+      <span class="x">×</span>
+      <span class="cresco-mark">crescō<em>.</em></span>
+    </span>
+    <a href="#" class="phase-back">← volver al one-pager</a>
+  </div>
+
+  <div class="phase-breadcrumb">
+    acuerdo <span class="sep">/</span> corrientes <span class="sep">/</span> <span class="current">s4 app de transportista</span>
+  </div>
+
+  <div class="phase-hero">
+    <div class="phase-title-row">
+      <span class="phase-code-mark">s4/</span>
+      <span class="phase-title">App de transportista</span>
+    </div>
+    <span class="phase-subtitle">Canal móvil para entregas terrestres · m3–m5 · MVP en m4 · roll-out m5</span>
+  </div>
+
+  <div class="phase-mini-timeline">
+    <span class="phase-mini-label">m1</span>
+    <div class="phase-mini-bar"><div class="phase-mini-fill" style="left:33%;width:50%;"></div></div>
+    <span class="phase-mini-label">m6</span>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">qué hacemos</div>
+    <div class="phase-section-body">
+      App móvil (iOS + Android) para que el transportista <strong>reciba la asignación de la ruta, despache desde el almacén, marque estados en vivo y capture prueba de entrega</strong>. Panel admin para que operaciones asigne rutas, vea cargas en mapa y resuelva incidencias. Conectada con los fletes y órdenes existentes — sin doble dato.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">por qué importa</div>
+    <div class="phase-section-body">
+      Hoy el último tramo es ciego. El cliente final pregunta por WhatsApp y nadie sabe dónde está su bulto. La app <strong>cierra la trazabilidad bulto-a-bulto desde China hasta la puerta del cliente</strong> — y, junto con créditos, habilita cobrar contra entrega real.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">entregables</div>
+    <div class="phase-section-body">
+      <ul>
+        <li>App Android + iOS para transportistas</li>
+        <li>Panel admin de asignación de rutas y monitoreo</li>
+        <li>Estados en vivo visibles para el cliente final</li>
+        <li>POD digital (foto + firma) capturado en la app</li>
+        <li>Notificaciones automáticas por cambio de estado</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">cuando está listo</div>
+    <div class="phase-section-body">
+      <strong>App en manos de 5 transportistas piloto al cierre de m4</strong> con flujo end-to-end probado. <strong>Roll-out completo en m5</strong>: 50+ entregas trazadas, panel admin en uso por operaciones.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">compromiso</div>
+    <div class="phase-section-body">
+      <strong>Corriente principal m3–m4</strong> (build app móvil + admin) con soporte en m5 (roll-out). Solapa con el cierre de Créditos y el arranque de Caracas — la coordinación se hace en la reunión semanal.
+    </div>
+  </div>
+
+  <div class="phase-nav">
+    <a href="#s3" class="prev">← s3 créditos</a>
+    <a href="#s5" class="nxt">s5 almacén caracas →</a>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     S5 · ALMACÉN CARACAS
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="page phase-page" id="s5">
+
+  <div class="top">
+    <span class="lockup">
+      <svg class="mogos-mark" viewBox="0 0 512 94" role="img" aria-label="mogos"><use href="#mogos-logo"/></svg>
+      <span class="x">×</span>
+      <span class="cresco-mark">crescō<em>.</em></span>
+    </span>
+    <a href="#" class="phase-back">← volver al one-pager</a>
+  </div>
+
+  <div class="phase-breadcrumb">
+    acuerdo <span class="sep">/</span> corrientes <span class="sep">/</span> <span class="current">s5 modernización almacén caracas</span>
+  </div>
+
+  <div class="phase-hero">
+    <div class="phase-title-row">
+      <span class="phase-code-mark">s5/</span>
+      <span class="phase-title">Almacén Caracas</span>
+    </div>
+    <span class="phase-subtitle">Manejo de pallets + procesos cableados al sistema · m4–m5 build · m6 hand-off · go-live m5</span>
+  </div>
+
+  <div class="phase-mini-timeline">
+    <span class="phase-mini-label">m1</span>
+    <div class="phase-mini-bar"><div class="phase-mini-fill" style="left:50%;width:50%;"></div></div>
+    <span class="phase-mini-label cur">m6</span>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">qué hacemos</div>
+    <div class="phase-section-body">
+      Modernizamos el almacén Caracas para <strong>operar con manejo de pallets</strong> y ahorrar tiempo con tecnología. <strong>Recepción con escaneo, ubicaciones digitales, paletizado y despacho cableados al sistema</strong>. Trazabilidad bulto-a-bulto, sin papel. Capacitación a la planta para que el equipo opere con el nuevo flujo desde el día uno.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">por qué importa</div>
+    <div class="phase-section-body">
+      Caracas es <strong>el último contacto con la mercancía antes de llegar al cliente</strong>. El manejo de pallets <strong>comprime los tiempos de recepción y despacho</strong>; cada minuto ahorrado en planta es capacidad liberada en temporada alta. Además cierra la cadena que arranca en China, alimenta la app de transportista con data limpia y <strong>activa cobranza contra entrega real</strong> en el módulo de créditos.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">entregables</div>
+    <div class="phase-section-body">
+      <ul>
+        <li>Manejo de pallets: ubicaciones, paletizado y picking digitales</li>
+        <li>Scanning + ubicaciones digitales en recepción</li>
+        <li>Proceso de despacho cableado al sistema (sin papel)</li>
+        <li>Capacitación a planta Caracas (operativa + supervisores)</li>
+        <li>Tablero de salud del almacén destino para dirección</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">cuando está listo</div>
+    <div class="phase-section-body">
+      <strong>Planta corriendo 100% sin papel al cierre de m5</strong> con scanning en recepción y despacho cableado. <strong>Hand-off en m6</strong>: la planta opera autónoma, sin acompañamiento técnico diario.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">compromiso</div>
+    <div class="phase-section-body">
+      <strong>Corriente principal m4–m5</strong> (build + go-live) con hand-off en m6. Depende de que el modelo de hub origen (China) esté validado para replicar el patrón en destino con mínima iteración.
+    </div>
+  </div>
+
+  <div class="phase-nav">
+    <a href="#s4" class="prev">← s4 transportista</a>
+    <a href="#s6" class="nxt">s6 ai · anthropic + notion →</a>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     S6 · AI · ANTHROPIC + NOTION (cross-company)
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="page phase-page" id="s6">
+
+  <div class="top">
+    <span class="lockup">
+      <svg class="mogos-mark" viewBox="0 0 512 94" role="img" aria-label="mogos"><use href="#mogos-logo"/></svg>
+      <span class="x">×</span>
+      <span class="cresco-mark">crescō<em>.</em></span>
+    </span>
+    <a href="#" class="phase-back">← volver al one-pager</a>
+  </div>
+
+  <div class="phase-breadcrumb">
+    acuerdo <span class="sep">/</span> corrientes <span class="sep">/</span> <span class="current">s6 fundamentos ai en lenguaje mogos</span>
+  </div>
+
+  <div class="phase-hero">
+    <div class="phase-title-row">
+      <span class="phase-code-mark">s6/</span>
+      <span class="phase-title">Fundamentos AI en lenguaje Mogos</span>
+    </div>
+    <span class="phase-subtitle">Cross-company · m1–m6 · Notion + Brand AI primero, agentes después, capacitación al final</span>
+  </div>
+
+  <div class="phase-mini-timeline">
+    <span class="phase-mini-label cur">m1</span>
+    <div class="phase-mini-bar"><div class="phase-mini-fill" style="left:0%;width:100%;"></div></div>
+    <span class="phase-mini-label cur">m6</span>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">qué hacemos</div>
+    <div class="phase-section-body">
+      Migramos a Mogos al stack de AI de Anthropic con Notion como hogar del conocimiento operativo. <strong>m1–m2:</strong> workspace Notion estructurado + Brand AI v1. <strong>m3–m5:</strong> agentes Claude para soporte, ventas y operaciones, conectados a los sistemas reales de Mogos. <strong>m6:</strong> formación cerrada para toda la empresa — operativa, ventas y dirección.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">por qué importa</div>
+    <div class="phase-section-body">
+      El resto de las corrientes generan datos y procesos. <strong>Sin AI estructurando ese conocimiento, Mogos crece pero no se vuelve más inteligente</strong>. Con AI, cada conversación de WhatsApp, cada cotización y cada reporte le enseña algo a la empresa — y la próxima vez que ese caso aparezca, se resuelve solo.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">entregables</div>
+    <div class="phase-section-body">
+      <ul>
+        <li>Workspace Notion estructurado (reuniones, tareas, OKRs, runbooks)</li>
+        <li>Brand AI v1 de Mogos + glosario operativo</li>
+        <li>Agentes Claude productivos: soporte, ventas, operaciones</li>
+        <li>Skills internas Anthropic (Claude, Code, Cowork, Design)</li>
+        <li>Formación operativa + planta + dirección (sesiones grabadas)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">cuando está listo</div>
+    <div class="phase-section-body">
+      <strong>80% del conocimiento crítico migrado a Notion al m3.</strong> <strong>Agentes en producción al m5</strong> respondiendo casos reales sin escalado humano en al menos 40% de los flujos definidos. <strong>Formación cerrada al m6</strong> con certificación interna por rol.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">compromiso</div>
+    <div class="phase-section-body">
+      <strong>Corriente cross todo el periodo.</strong> No compite por capacidad con las otras — es la capa que hace que todo lo demás se acumule en conocimiento. <em>Nota:</em> incluye licencias y setup del ecosistema Anthropic; la integración técnica profunda de Notion con sistemas legacy se evalúa caso a caso.
+    </div>
+  </div>
+
+  <div class="phase-nav">
+    <a href="#s5" class="prev">← s5 almacén caracas</a>
+    <a href="#s7" class="nxt">s7 app móvil del cliente →</a>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     s7 · APP MÓVIL DEL CLIENTE
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="page phase-page" id="s7">
+
+  <div class="top">
+    <span class="lockup">
+      <svg class="mogos-mark" viewBox="0 0 512 94" role="img" aria-label="mogos"><use href="#mogos-logo"/></svg>
+      <span class="x">×</span>
+      <span class="cresco-mark">crescō<em>.</em></span>
+    </span>
+    <a href="#" class="phase-back">← volver al one-pager</a>
+  </div>
+
+  <div class="phase-breadcrumb">
+    acuerdo <span class="sep">/</span> corrientes <span class="sep">/</span> <span class="current">s7 app móvil del cliente</span>
+  </div>
+
+  <div class="phase-hero">
+    <div class="phase-title-row">
+      <span class="phase-code-mark">s7/</span>
+      <span class="phase-title">App móvil del cliente</span>
+    </div>
+    <span class="phase-subtitle">iOS + Android · m2–m6 · go-live m5 con primer release público</span>
+  </div>
+
+  <div class="phase-mini-timeline">
+    <span class="phase-mini-label">m1</span>
+    <div class="phase-mini-bar"><div class="phase-mini-fill" style="left:17%;width:83%;"></div></div>
+    <span class="phase-mini-label cur">m2–m6</span>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">qué hacemos</div>
+    <div class="phase-section-body">
+      Construimos la app móvil para el cliente final — <strong>iOS + Android</strong> — desde m2 hasta m4 con foco en cotizar, rastrear órdenes, ver historial y recibir notificaciones push en cada cambio de estado. <strong>m5–m6:</strong> publicación en App Store y Google Play, ajustes post-launch y onboarding del primer batch de clientes activos. La app reusa el Brand AI de Mogos para conversar igual que el WhatsApp.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">por qué importa</div>
+    <div class="phase-section-body">
+      El cliente moderno espera una app — no llamar ni esperar respuesta de WhatsApp para saber dónde está su orden. <strong>Reduce la carga del equipo de soporte</strong> al darle autonomía al cliente 24/7, y <strong>aumenta retención</strong> porque tener la app instalada es un compromiso visible vs un contacto de WhatsApp más en la libreta.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">entregables</div>
+    <div class="phase-section-body">
+      <ul>
+        <li>App iOS publicada en App Store</li>
+        <li>App Android publicada en Google Play</li>
+        <li>Sistema de push notifications conectado al backend</li>
+        <li>Deep links para abrir órdenes desde el WhatsApp del agente</li>
+        <li>Onboarding in-app + login con número de teléfono</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">cuando está listo</div>
+    <div class="phase-section-body">
+      <strong>App publicada en ambas tiendas al m5</strong> con la primera tanda de clientes activos descargando y cotizando. <strong>NPS interno ≥ 7</strong> del equipo de operaciones antes del go-live. Crashes < 1% en producción.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">compromiso</div>
+    <div class="phase-section-body">
+      <strong>Build sustancial</strong> · ocupa una porción significativa del equipo durante m2–m4. Las cuentas Apple Developer ($99/año) y Google Play ($25 único) son <em>responsabilidad de Mogos</em>. Mantenimiento post-launch entra en s1.
+    </div>
+  </div>
+
+  <div class="phase-nav">
+    <a href="#s6" class="prev">← s6 fundamentos ai</a>
+    <a href="#s8" class="nxt">s8 gamification →</a>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     s8 · GAMIFICATION
+     ════════════════════════════════════════════════════════════════════ -->
+<section class="page phase-page" id="s8">
+
+  <div class="top">
+    <span class="lockup">
+      <svg class="mogos-mark" viewBox="0 0 512 94" role="img" aria-label="mogos"><use href="#mogos-logo"/></svg>
+      <span class="x">×</span>
+      <span class="cresco-mark">crescō<em>.</em></span>
+    </span>
+    <a href="#" class="phase-back">← volver al one-pager</a>
+  </div>
+
+  <div class="phase-breadcrumb">
+    acuerdo <span class="sep">/</span> corrientes <span class="sep">/</span> <span class="current">s8 gamification</span>
+  </div>
+
+  <div class="phase-hero">
+    <div class="phase-title-row">
+      <span class="phase-code-mark">s8/</span>
+      <span class="phase-title">Gamification</span>
+    </div>
+    <span class="phase-subtitle">Sistema de puntos + niveles + recompensas · m4–m6 · primer badge entregado al m5</span>
+  </div>
+
+  <div class="phase-mini-timeline">
+    <span class="phase-mini-label">m1</span>
+    <div class="phase-mini-bar"><div class="phase-mini-fill" style="left:50%;width:50%;"></div></div>
+    <span class="phase-mini-label cur">m4–m6</span>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">qué hacemos</div>
+    <div class="phase-section-body">
+      Diseñamos e implementamos un <strong>sistema de puntos, niveles y recompensas</strong> para clientes recurrentes. <strong>m4–m5:</strong> motor de scoring que asigna puntos por orden, suma niveles, desbloquea badges y configura recompensas. <strong>m6:</strong> integración con el canal WhatsApp y app móvil para que el cliente vea su progreso y reciba notificaciones cuando sube de nivel.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">por qué importa</div>
+    <div class="phase-section-body">
+      <strong>Logística es un negocio de repetición</strong>: el valor no está en la primera orden, está en las 50 siguientes. Gamification convierte la frecuencia en hábito visible — el cliente ve cuánto le falta para el siguiente nivel y eso solo lo hace volver. <strong>Aumenta repeat purchases y retención</strong> sin descontar márgenes.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">entregables</div>
+    <div class="phase-section-body">
+      <ul>
+        <li>Motor de puntos configurable por dirección (reglas, multiplicadores)</li>
+        <li>Dashboard interno para ver y ajustar niveles/recompensas</li>
+        <li>Catálogo inicial de recompensas (descuentos, prioridad de envío, etc.)</li>
+        <li>Integración WhatsApp: notificación al subir de nivel o canjear premio</li>
+        <li>Visualización del progreso del cliente en la app móvil (s7) y WhatsApp</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">cuando está listo</div>
+    <div class="phase-section-body">
+      <strong>Primer badge entregado a un cliente real al m5.</strong> Catálogo de recompensas vivo con al menos 5 opciones. <strong>10% de los clientes recurrentes</strong> con al menos un nivel completado al m6.
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section-lbl">compromiso</div>
+    <div class="phase-section-body">
+      <strong>Build pequeño-medio</strong> · construido sobre los datos que ya genera la plataforma. No requiere infraestructura nueva. <em>El diseño de las reglas y el catálogo de recompensas se decide con dirección — Mogos define qué premia y cuánto</em>.
+    </div>
+  </div>
+
+  <div class="phase-nav">
+    <a href="#s7" class="prev">← s7 app móvil</a>
+    <a href="#" class="nxt">volver al acuerdo →</a>
+  </div>
+
+</section>
+
+<script>
+  (function () {
+    const ROUTES = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8'];
+
+    function currentRoute() {
+      const hash = window.location.hash.slice(1);
+      return ROUTES.includes(hash) ? hash : null;
+    }
+
+    function showRoute() {
+      document.body.classList.add('routing');
+
+      setTimeout(() => {
+        const route = currentRoute();
+        document.body.classList.toggle('view-phase', route !== null);
+
+        document.querySelectorAll('.phase-page').forEach(page => {
+          page.style.display = page.id === route ? 'flex' : 'none';
+        });
+
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
+        requestAnimationFrame(() => {
+          document.body.classList.remove('routing');
+        });
+      }, 180);
+    }
+
+    window.addEventListener('hashchange', showRoute);
+    window.addEventListener('DOMContentLoaded', showRoute);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.tl-row.clickable').forEach(row => {
+        const target = '#' + row.dataset.phase;
+        row.addEventListener('click', () => {
+          window.location.hash = target;
+        });
+        row.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.location.hash = target;
+          }
+        });
+      });
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      const route = currentRoute();
+      if (route === null) return;
+
+      const idx = ROUTES.indexOf(route);
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        window.location.hash = idx > 0 ? '#' + ROUTES[idx - 1] : '#';
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        window.location.hash = idx < ROUTES.length - 1 ? '#' + ROUTES[idx + 1] : '#';
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        window.location.hash = '#';
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
