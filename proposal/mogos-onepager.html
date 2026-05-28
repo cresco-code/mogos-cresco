@@ -1056,6 +1056,32 @@
     .phase-section-lbl { font-size: 11px; padding-top: 0; }
     .phase-section-body { font-size: 13.5px; }
     .phase-nav { flex-wrap: wrap; gap: 12px; font-size: 11px; }
+
+    /* major section: reduce mm units on mobile */
+    .major-section { margin-top: 32px; padding-top: 24px; }
+    .major-section .major-eyebrow { font-size: 11.5px; margin-bottom: 4px; }
+    .major-section .major-title { font-size: 22px; line-height: 1.15; }
+    .major-section .major-hint { font-size: 12.5px; line-height: 1.5; margin-bottom: 16px; }
+
+    /* inversion block: stack on mobile */
+    .inversion-block { margin-top: 24px; padding-top: 20px; }
+    .inversion-eyebrow { font-size: 12px; margin-bottom: 10px; }
+    .inversion-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .price-amount { font-size: 40px; }
+    .price-currency { font-size: 16px; margin-right: 6px; }
+    .price-rate { font-size: 15px; }
+    .price-meta { font-size: 11.5px; }
+    .inversion-label { font-size: 12px; margin-bottom: 8px; }
+    .inversion-team ul { font-size: 12.5px; gap: 4px; }
+    .inversion-team li { padding-left: 12px; }
+    .inversion-note { margin-top: 18px; padding-top: 14px; font-size: 12px; }
+
+    /* legend stacks softly */
+    .tl-legend { font-size: 9px; gap: 3px 10px; margin-top: 8px; }
+    .tl-legend-swatch { width: 12px; height: 5px; }
   }
 
   @media (max-width: 420px) {
@@ -1071,6 +1097,13 @@
     .tl-amt .pct { font-size: 8.5px; }
     .phase-title { font-size: 22px; }
     .phase-code-mark { font-size: 22px; }
+
+    /* inversion shrinks more on phones */
+    .price-amount { font-size: 34px; }
+    .price-currency { font-size: 14px; margin-right: 5px; }
+    .price-rate { font-size: 14px; }
+    .inversion-team ul { font-size: 12px; }
+    .inversion-block { margin-top: 20px; padding-top: 16px; }
   }
 
   @media print {
